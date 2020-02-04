@@ -1,0 +1,2 @@
+DynamixelSDK/ros:dynamixel-workbench-msgs/dynamixel_workbench_msgs:dynamixel-workbench/dynamixel_workbench:dynamixel-workbench/dynamixel_workbench_controllers:dynamixel-workbench/dynamixel_workbench_operators:dynamixel-workbench/dynamixel_workbench_single_manager:dynamixel-workbench/dynamixel_workbench_single_manager_gui:dynamixel-workbench/dynamixel_workbench_toolbox:rplidar_ros-master:usb_cam-develop
+-DCATKIN_DEVEL_PREFIX=/home/samuel/Desktop/MARV2/catkin_ws/devel -DCMAKE_INSTALL_PREFIX=/home/samuel/Desktop/MARV2/catkin_ws/install -G Unix Makefiles
