@@ -7,13 +7,13 @@ dynamixel-workbench/dynamixel_workbench_controllers/CMakeFiles/dynamixel_workben
  /home/samuel/Desktop/MARV2/catkin_ws/devel/include/dynamixel_workbench_msgs/DynamixelCommandResponse.h
  /home/samuel/Desktop/MARV2/catkin_ws/devel/include/dynamixel_workbench_msgs/DynamixelState.h
  /home/samuel/Desktop/MARV2/catkin_ws/devel/include/dynamixel_workbench_msgs/DynamixelStateList.h
- /home/samuel/Desktop/MARV2/catkin_ws/src/DynamixelSDK/ros/include/dynamixel_sdk/dynamixel_sdk.h
- /home/samuel/Desktop/MARV2/catkin_ws/src/DynamixelSDK/ros/include/dynamixel_sdk/group_bulk_read.h
- /home/samuel/Desktop/MARV2/catkin_ws/src/DynamixelSDK/ros/include/dynamixel_sdk/group_bulk_write.h
- /home/samuel/Desktop/MARV2/catkin_ws/src/DynamixelSDK/ros/include/dynamixel_sdk/group_sync_read.h
- /home/samuel/Desktop/MARV2/catkin_ws/src/DynamixelSDK/ros/include/dynamixel_sdk/group_sync_write.h
- /home/samuel/Desktop/MARV2/catkin_ws/src/DynamixelSDK/ros/include/dynamixel_sdk/packet_handler.h
- /home/samuel/Desktop/MARV2/catkin_ws/src/DynamixelSDK/ros/include/dynamixel_sdk/port_handler.h
+ /home/samuel/Desktop/MARV2/catkin_ws/src/Dynamixel_SDK/ros/include/dynamixel_sdk/dynamixel_sdk.h
+ /home/samuel/Desktop/MARV2/catkin_ws/src/Dynamixel_SDK/ros/include/dynamixel_sdk/group_bulk_read.h
+ /home/samuel/Desktop/MARV2/catkin_ws/src/Dynamixel_SDK/ros/include/dynamixel_sdk/group_bulk_write.h
+ /home/samuel/Desktop/MARV2/catkin_ws/src/Dynamixel_SDK/ros/include/dynamixel_sdk/group_sync_read.h
+ /home/samuel/Desktop/MARV2/catkin_ws/src/Dynamixel_SDK/ros/include/dynamixel_sdk/group_sync_write.h
+ /home/samuel/Desktop/MARV2/catkin_ws/src/Dynamixel_SDK/ros/include/dynamixel_sdk/packet_handler.h
+ /home/samuel/Desktop/MARV2/catkin_ws/src/Dynamixel_SDK/ros/include/dynamixel_sdk/port_handler.h
  /home/samuel/Desktop/MARV2/catkin_ws/src/dynamixel-workbench/dynamixel_workbench_controllers/include/dynamixel_workbench_controllers/dynamixel_workbench_controllers.h
  /home/samuel/Desktop/MARV2/catkin_ws/src/dynamixel-workbench/dynamixel_workbench_controllers/include/dynamixel_workbench_controllers/trajectory_generator.h
  /home/samuel/Desktop/MARV2/catkin_ws/src/dynamixel-workbench/dynamixel_workbench_controllers/src/dynamixel_workbench_controllers.cpp

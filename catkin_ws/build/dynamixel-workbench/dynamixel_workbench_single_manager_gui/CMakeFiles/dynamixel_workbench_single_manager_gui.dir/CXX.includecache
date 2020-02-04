@@ -418,61 +418,61 @@ QtWidgets/QVBoxLayout
 QtWidgets/QWidget
 -
 
-/home/samuel/Desktop/MARV2/catkin_ws/src/DynamixelSDK/ros/include/dynamixel_sdk/dynamixel_sdk.h
+/home/samuel/Desktop/MARV2/catkin_ws/src/Dynamixel_SDK/ros/include/dynamixel_sdk/dynamixel_sdk.h
 group_bulk_read.h
-/home/samuel/Desktop/MARV2/catkin_ws/src/DynamixelSDK/ros/include/dynamixel_sdk/group_bulk_read.h
+/home/samuel/Desktop/MARV2/catkin_ws/src/Dynamixel_SDK/ros/include/dynamixel_sdk/group_bulk_read.h
 group_bulk_write.h
-/home/samuel/Desktop/MARV2/catkin_ws/src/DynamixelSDK/ros/include/dynamixel_sdk/group_bulk_write.h
+/home/samuel/Desktop/MARV2/catkin_ws/src/Dynamixel_SDK/ros/include/dynamixel_sdk/group_bulk_write.h
 group_sync_read.h
-/home/samuel/Desktop/MARV2/catkin_ws/src/DynamixelSDK/ros/include/dynamixel_sdk/group_sync_read.h
+/home/samuel/Desktop/MARV2/catkin_ws/src/Dynamixel_SDK/ros/include/dynamixel_sdk/group_sync_read.h
 group_sync_write.h
-/home/samuel/Desktop/MARV2/catkin_ws/src/DynamixelSDK/ros/include/dynamixel_sdk/group_sync_write.h
+/home/samuel/Desktop/MARV2/catkin_ws/src/Dynamixel_SDK/ros/include/dynamixel_sdk/group_sync_write.h
 packet_handler.h
-/home/samuel/Desktop/MARV2/catkin_ws/src/DynamixelSDK/ros/include/dynamixel_sdk/packet_handler.h
+/home/samuel/Desktop/MARV2/catkin_ws/src/Dynamixel_SDK/ros/include/dynamixel_sdk/packet_handler.h
 port_handler.h
-/home/samuel/Desktop/MARV2/catkin_ws/src/DynamixelSDK/ros/include/dynamixel_sdk/port_handler.h
+/home/samuel/Desktop/MARV2/catkin_ws/src/Dynamixel_SDK/ros/include/dynamixel_sdk/port_handler.h
 
-/home/samuel/Desktop/MARV2/catkin_ws/src/DynamixelSDK/ros/include/dynamixel_sdk/group_bulk_read.h
+/home/samuel/Desktop/MARV2/catkin_ws/src/Dynamixel_SDK/ros/include/dynamixel_sdk/group_bulk_read.h
 map
 -
 vector
 -
 port_handler.h
-/home/samuel/Desktop/MARV2/catkin_ws/src/DynamixelSDK/ros/include/dynamixel_sdk/port_handler.h
+/home/samuel/Desktop/MARV2/catkin_ws/src/Dynamixel_SDK/ros/include/dynamixel_sdk/port_handler.h
 packet_handler.h
-/home/samuel/Desktop/MARV2/catkin_ws/src/DynamixelSDK/ros/include/dynamixel_sdk/packet_handler.h
+/home/samuel/Desktop/MARV2/catkin_ws/src/Dynamixel_SDK/ros/include/dynamixel_sdk/packet_handler.h
 
-/home/samuel/Desktop/MARV2/catkin_ws/src/DynamixelSDK/ros/include/dynamixel_sdk/group_bulk_write.h
+/home/samuel/Desktop/MARV2/catkin_ws/src/Dynamixel_SDK/ros/include/dynamixel_sdk/group_bulk_write.h
 map
 -
 vector
 -
 port_handler.h
-/home/samuel/Desktop/MARV2/catkin_ws/src/DynamixelSDK/ros/include/dynamixel_sdk/port_handler.h
+/home/samuel/Desktop/MARV2/catkin_ws/src/Dynamixel_SDK/ros/include/dynamixel_sdk/port_handler.h
 packet_handler.h
-/home/samuel/Desktop/MARV2/catkin_ws/src/DynamixelSDK/ros/include/dynamixel_sdk/packet_handler.h
+/home/samuel/Desktop/MARV2/catkin_ws/src/Dynamixel_SDK/ros/include/dynamixel_sdk/packet_handler.h
 
-/home/samuel/Desktop/MARV2/catkin_ws/src/DynamixelSDK/ros/include/dynamixel_sdk/group_sync_read.h
+/home/samuel/Desktop/MARV2/catkin_ws/src/Dynamixel_SDK/ros/include/dynamixel_sdk/group_sync_read.h
 map
 -
 vector
 -
 port_handler.h
-/home/samuel/Desktop/MARV2/catkin_ws/src/DynamixelSDK/ros/include/dynamixel_sdk/port_handler.h
+/home/samuel/Desktop/MARV2/catkin_ws/src/Dynamixel_SDK/ros/include/dynamixel_sdk/port_handler.h
 packet_handler.h
-/home/samuel/Desktop/MARV2/catkin_ws/src/DynamixelSDK/ros/include/dynamixel_sdk/packet_handler.h
+/home/samuel/Desktop/MARV2/catkin_ws/src/Dynamixel_SDK/ros/include/dynamixel_sdk/packet_handler.h
 
-/home/samuel/Desktop/MARV2/catkin_ws/src/DynamixelSDK/ros/include/dynamixel_sdk/group_sync_write.h
+/home/samuel/Desktop/MARV2/catkin_ws/src/Dynamixel_SDK/ros/include/dynamixel_sdk/group_sync_write.h
 map
 -
 vector
 -
 port_handler.h
-/home/samuel/Desktop/MARV2/catkin_ws/src/DynamixelSDK/ros/include/dynamixel_sdk/port_handler.h
+/home/samuel/Desktop/MARV2/catkin_ws/src/Dynamixel_SDK/ros/include/dynamixel_sdk/port_handler.h
 packet_handler.h
-/home/samuel/Desktop/MARV2/catkin_ws/src/DynamixelSDK/ros/include/dynamixel_sdk/packet_handler.h
+/home/samuel/Desktop/MARV2/catkin_ws/src/Dynamixel_SDK/ros/include/dynamixel_sdk/packet_handler.h
 
-/home/samuel/Desktop/MARV2/catkin_ws/src/DynamixelSDK/ros/include/dynamixel_sdk/packet_handler.h
+/home/samuel/Desktop/MARV2/catkin_ws/src/Dynamixel_SDK/ros/include/dynamixel_sdk/packet_handler.h
 Arduino.h
 -
 stdio.h
@@ -480,9 +480,9 @@ stdio.h
 vector
 -
 port_handler.h
-/home/samuel/Desktop/MARV2/catkin_ws/src/DynamixelSDK/ros/include/dynamixel_sdk/port_handler.h
+/home/samuel/Desktop/MARV2/catkin_ws/src/Dynamixel_SDK/ros/include/dynamixel_sdk/port_handler.h
 
-/home/samuel/Desktop/MARV2/catkin_ws/src/DynamixelSDK/ros/include/dynamixel_sdk/port_handler.h
+/home/samuel/Desktop/MARV2/catkin_ws/src/Dynamixel_SDK/ros/include/dynamixel_sdk/port_handler.h
 stdint.h
 -
 

@@ -31,7 +31,7 @@ set(CMAKE_CXX_TARGET_INCLUDE_PATH
   "/home/samuel/Desktop/MARV2/catkin_ws/devel/include/dynamixel_workbench_single_manager_gui"
   "/home/samuel/Desktop/MARV2/catkin_ws/devel/include"
   "/home/samuel/Desktop/MARV2/catkin_ws/src/dynamixel-workbench/dynamixel_workbench_toolbox/include"
-  "/home/samuel/Desktop/MARV2/catkin_ws/src/DynamixelSDK/ros/include"
+  "/home/samuel/Desktop/MARV2/catkin_ws/src/Dynamixel_SDK/ros/include"
   "/opt/ros/melodic/include"
   "/opt/ros/melodic/share/xmlrpcpp/cmake/../../../include/xmlrpcpp"
   "/usr/include/x86_64-linux-gnu/qt5"
@@ -44,7 +44,7 @@ set(CMAKE_CXX_TARGET_INCLUDE_PATH
 # Targets to which this target links.
 set(CMAKE_TARGET_LINKED_INFO_FILES
   "/home/samuel/Desktop/MARV2/catkin_ws/build/dynamixel-workbench/dynamixel_workbench_toolbox/CMakeFiles/dynamixel_workbench_toolbox.dir/DependInfo.cmake"
-  "/home/samuel/Desktop/MARV2/catkin_ws/build/DynamixelSDK/ros/CMakeFiles/dynamixel_sdk.dir/DependInfo.cmake"
+  "/home/samuel/Desktop/MARV2/catkin_ws/build/Dynamixel_SDK/ros/CMakeFiles/dynamixel_sdk.dir/DependInfo.cmake"
   )
 
 # Fortran module output directory.

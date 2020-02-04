@@ -24,13 +24,13 @@ dynamixel-workbench/dynamixel_workbench_single_manager/CMakeFiles/single_dynamix
  /home/samuel/Desktop/MARV2/catkin_ws/devel/include/dynamixel_workbench_msgs/XL320.h
  /home/samuel/Desktop/MARV2/catkin_ws/devel/include/dynamixel_workbench_msgs/XM.h
  /home/samuel/Desktop/MARV2/catkin_ws/devel/include/dynamixel_workbench_msgs/XMExt.h
- /home/samuel/Desktop/MARV2/catkin_ws/src/DynamixelSDK/ros/include/dynamixel_sdk/dynamixel_sdk.h
- /home/samuel/Desktop/MARV2/catkin_ws/src/DynamixelSDK/ros/include/dynamixel_sdk/group_bulk_read.h
- /home/samuel/Desktop/MARV2/catkin_ws/src/DynamixelSDK/ros/include/dynamixel_sdk/group_bulk_write.h
- /home/samuel/Desktop/MARV2/catkin_ws/src/DynamixelSDK/ros/include/dynamixel_sdk/group_sync_read.h
- /home/samuel/Desktop/MARV2/catkin_ws/src/DynamixelSDK/ros/include/dynamixel_sdk/group_sync_write.h
- /home/samuel/Desktop/MARV2/catkin_ws/src/DynamixelSDK/ros/include/dynamixel_sdk/packet_handler.h
- /home/samuel/Desktop/MARV2/catkin_ws/src/DynamixelSDK/ros/include/dynamixel_sdk/port_handler.h
+ /home/samuel/Desktop/MARV2/catkin_ws/src/Dynamixel_SDK/ros/include/dynamixel_sdk/dynamixel_sdk.h
+ /home/samuel/Desktop/MARV2/catkin_ws/src/Dynamixel_SDK/ros/include/dynamixel_sdk/group_bulk_read.h
+ /home/samuel/Desktop/MARV2/catkin_ws/src/Dynamixel_SDK/ros/include/dynamixel_sdk/group_bulk_write.h
+ /home/samuel/Desktop/MARV2/catkin_ws/src/Dynamixel_SDK/ros/include/dynamixel_sdk/group_sync_read.h
+ /home/samuel/Desktop/MARV2/catkin_ws/src/Dynamixel_SDK/ros/include/dynamixel_sdk/group_sync_write.h
+ /home/samuel/Desktop/MARV2/catkin_ws/src/Dynamixel_SDK/ros/include/dynamixel_sdk/packet_handler.h
+ /home/samuel/Desktop/MARV2/catkin_ws/src/Dynamixel_SDK/ros/include/dynamixel_sdk/port_handler.h
  /home/samuel/Desktop/MARV2/catkin_ws/src/dynamixel-workbench/dynamixel_workbench_single_manager/include/dynamixel_workbench_single_manager/message_header.h
  /home/samuel/Desktop/MARV2/catkin_ws/src/dynamixel-workbench/dynamixel_workbench_single_manager/include/dynamixel_workbench_single_manager/single_dynamixel_monitor.h
  /home/samuel/Desktop/MARV2/catkin_ws/src/dynamixel-workbench/dynamixel_workbench_single_manager/src/single_dynamixel_monitor.cpp

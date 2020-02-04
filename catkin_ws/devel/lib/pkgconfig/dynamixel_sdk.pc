@@ -3,6 +3,6 @@ prefix=/home/samuel/Desktop/MARV2/catkin_ws/devel
 Name: dynamixel_sdk
 Description: Description of dynamixel_sdk
 Version: 3.7.21
-Cflags: -I/home/samuel/Desktop/MARV2/catkin_ws/src/DynamixelSDK/ros/include
+Cflags: -I/home/samuel/Desktop/MARV2/catkin_ws/src/Dynamixel_SDK/ros/include
 Libs: -L/home/samuel/Desktop/MARV2/catkin_ws/devel/lib -ldynamixel_sdk
 Requires: roscpp rospy

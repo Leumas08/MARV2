@@ -1,0 +1,57 @@
+# You can find control table of Dynamixel on emanual (http://emanual.robotis.com/#control-table)
+# Control table item has to be set Camel_Case and not included whitespace
+# You are supposed to set at least Dynamixel ID
+# This example is compatible with Dynamixel using protocol 2.0
+
+#Turning
+LF:
+  ID: 1
+  Return_Delay_Time: 0
+  Operating_Mode: 3
+  Profile_Acceleration: 0
+  Profile_Velocity: 2
+RF:
+  ID: 2
+  Return_Delay_Time: 0
+  Operating_Mode: 3
+  Profile_Acceleration: 0
+  Profile_Velocity: 2
+LB:
+  ID: 4
+  Return_Delay_Time: 0
+  Operating_Mode: 3
+  Profile_Acceleration: 0
+  Profile_Velocity: 0
+RB:
+  ID: 3
+  Return_Delay_Time: 0
+  Operating_Mode: 3
+  Profile_Acceleration: 0
+  Profile_Velocity: 0
+
+#Motion
+
+FL:
+  ID: 5
+  Return_Delay_Time: 0
+  Operating_Mode: 1
+  Profile_Acceleration: 0
+  Profile_Velocity: 0
+FR:
+  ID: 6
+  Return_Delay_Time: 0
+  Operating_Mode: 1
+  Profile_Acceleration: 0
+  Profile_Velocity: 0
+BL:
+  ID: 7
+  Return_Delay_Time: 0
+  Operating_Mode: 1
+  Profile_Acceleration: 0
+  Profile_Velocity: 0
+BR:
+  ID: 8
+  Return_Delay_Time: 0
+  Operating_Mode: 1
+  Profile_Acceleration: 0
+  Profile_Velocity: 0

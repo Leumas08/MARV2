@@ -324,7 +324,7 @@ cmake_modules_DIR:PATH=/opt/ros/melodic/share/cmake_modules/cmake
 cpp_common_DIR:PATH=/opt/ros/melodic/share/cpp_common/cmake
 
 //Value Computed by CMake
-dynamixel_sdk_BINARY_DIR:STATIC=/home/samuel/Desktop/MARV2/catkin_ws/build/DynamixelSDK/ros
+dynamixel_sdk_BINARY_DIR:STATIC=/home/samuel/Desktop/MARV2/catkin_ws/build/Dynamixel_SDK/ros
 
 //The directory containing a CMake configuration file for dynamixel_sdk.
 dynamixel_sdk_DIR:PATH=/home/samuel/Desktop/MARV2/catkin_ws/devel/share/dynamixel_sdk/cmake
@@ -333,49 +333,49 @@ dynamixel_sdk_DIR:PATH=/home/samuel/Desktop/MARV2/catkin_ws/devel/share/dynamixe
 dynamixel_sdk_LIB_DEPENDS:STATIC=general;/opt/ros/melodic/lib/libroscpp.so;general;/usr/lib/x86_64-linux-gnu/libboost_filesystem.so;general;/usr/lib/x86_64-linux-gnu/libboost_signals.so;general;/opt/ros/melodic/lib/librosconsole.so;general;/opt/ros/melodic/lib/librosconsole_log4cxx.so;general;/opt/ros/melodic/lib/librosconsole_backend_interface.so;general;/usr/lib/x86_64-linux-gnu/liblog4cxx.so;general;/usr/lib/x86_64-linux-gnu/libboost_regex.so;general;/opt/ros/melodic/lib/libroscpp_serialization.so;general;/opt/ros/melodic/lib/libxmlrpcpp.so;general;/opt/ros/melodic/lib/librostime.so;general;/opt/ros/melodic/lib/libcpp_common.so;general;/usr/lib/x86_64-linux-gnu/libboost_system.so;general;/usr/lib/x86_64-linux-gnu/libboost_thread.so;general;/usr/lib/x86_64-linux-gnu/libboost_chrono.so;general;/usr/lib/x86_64-linux-gnu/libboost_date_time.so;general;/usr/lib/x86_64-linux-gnu/libboost_atomic.so;general;/usr/lib/x86_64-linux-gnu/libpthread.so;general;/usr/lib/x86_64-linux-gnu/libconsole_bridge.so.0.4;
 
 //Value Computed by CMake
-dynamixel_sdk_SOURCE_DIR:STATIC=/home/samuel/Desktop/MARV2/catkin_ws/src/DynamixelSDK/ros
+dynamixel_sdk_SOURCE_DIR:STATIC=/home/samuel/Desktop/MARV2/catkin_ws/src/Dynamixel_SDK/ros
 
 //Value Computed by CMake
-dynamixel_workbench_BINARY_DIR:STATIC=/home/samuel/Desktop/MARV2/catkin_ws/build/dynamixel-workbench/dynamixel_workbench
+dynamixel_workbench_BINARY_DIR:STATIC=/home/samuel/Desktop/MARV2/catkin_ws/build/dynamixel_workbench/dynamixel_workbench
 
 //Value Computed by CMake
-dynamixel_workbench_SOURCE_DIR:STATIC=/home/samuel/Desktop/MARV2/catkin_ws/src/dynamixel-workbench/dynamixel_workbench
+dynamixel_workbench_SOURCE_DIR:STATIC=/home/samuel/Desktop/MARV2/catkin_ws/src/dynamixel_workbench/dynamixel_workbench
 
 //Value Computed by CMake
-dynamixel_workbench_controllers_BINARY_DIR:STATIC=/home/samuel/Desktop/MARV2/catkin_ws/build/dynamixel-workbench/dynamixel_workbench_controllers
+dynamixel_workbench_controllers_BINARY_DIR:STATIC=/home/samuel/Desktop/MARV2/catkin_ws/build/dynamixel_workbench/dynamixel_workbench_controllers
 
 //Value Computed by CMake
-dynamixel_workbench_controllers_SOURCE_DIR:STATIC=/home/samuel/Desktop/MARV2/catkin_ws/src/dynamixel-workbench/dynamixel_workbench_controllers
+dynamixel_workbench_controllers_SOURCE_DIR:STATIC=/home/samuel/Desktop/MARV2/catkin_ws/src/dynamixel_workbench/dynamixel_workbench_controllers
 
 //Value Computed by CMake
-dynamixel_workbench_msgs_BINARY_DIR:STATIC=/home/samuel/Desktop/MARV2/catkin_ws/build/dynamixel-workbench-msgs/dynamixel_workbench_msgs
+dynamixel_workbench_msgs_BINARY_DIR:STATIC=/home/samuel/Desktop/MARV2/catkin_ws/build/dynamixel_workbench_msgs/dynamixel_workbench_msgs
 
 //The directory containing a CMake configuration file for dynamixel_workbench_msgs.
 dynamixel_workbench_msgs_DIR:PATH=/home/samuel/Desktop/MARV2/catkin_ws/devel/share/dynamixel_workbench_msgs/cmake
 
 //Value Computed by CMake
-dynamixel_workbench_msgs_SOURCE_DIR:STATIC=/home/samuel/Desktop/MARV2/catkin_ws/src/dynamixel-workbench-msgs/dynamixel_workbench_msgs
+dynamixel_workbench_msgs_SOURCE_DIR:STATIC=/home/samuel/Desktop/MARV2/catkin_ws/src/dynamixel_workbench_msgs/dynamixel_workbench_msgs
 
 //Value Computed by CMake
-dynamixel_workbench_operators_BINARY_DIR:STATIC=/home/samuel/Desktop/MARV2/catkin_ws/build/dynamixel-workbench/dynamixel_workbench_operators
+dynamixel_workbench_operators_BINARY_DIR:STATIC=/home/samuel/Desktop/MARV2/catkin_ws/build/dynamixel_workbench/dynamixel_workbench_operators
 
 //Value Computed by CMake
-dynamixel_workbench_operators_SOURCE_DIR:STATIC=/home/samuel/Desktop/MARV2/catkin_ws/src/dynamixel-workbench/dynamixel_workbench_operators
+dynamixel_workbench_operators_SOURCE_DIR:STATIC=/home/samuel/Desktop/MARV2/catkin_ws/src/dynamixel_workbench/dynamixel_workbench_operators
 
 //Value Computed by CMake
-dynamixel_workbench_single_manager_BINARY_DIR:STATIC=/home/samuel/Desktop/MARV2/catkin_ws/build/dynamixel-workbench/dynamixel_workbench_single_manager
+dynamixel_workbench_single_manager_BINARY_DIR:STATIC=/home/samuel/Desktop/MARV2/catkin_ws/build/dynamixel_workbench/dynamixel_workbench_single_manager
 
 //Value Computed by CMake
-dynamixel_workbench_single_manager_SOURCE_DIR:STATIC=/home/samuel/Desktop/MARV2/catkin_ws/src/dynamixel-workbench/dynamixel_workbench_single_manager
+dynamixel_workbench_single_manager_SOURCE_DIR:STATIC=/home/samuel/Desktop/MARV2/catkin_ws/src/dynamixel_workbench/dynamixel_workbench_single_manager
 
 //Value Computed by CMake
-dynamixel_workbench_single_manager_gui_BINARY_DIR:STATIC=/home/samuel/Desktop/MARV2/catkin_ws/build/dynamixel-workbench/dynamixel_workbench_single_manager_gui
+dynamixel_workbench_single_manager_gui_BINARY_DIR:STATIC=/home/samuel/Desktop/MARV2/catkin_ws/build/dynamixel_workbench/dynamixel_workbench_single_manager_gui
 
 //Value Computed by CMake
-dynamixel_workbench_single_manager_gui_SOURCE_DIR:STATIC=/home/samuel/Desktop/MARV2/catkin_ws/src/dynamixel-workbench/dynamixel_workbench_single_manager_gui
+dynamixel_workbench_single_manager_gui_SOURCE_DIR:STATIC=/home/samuel/Desktop/MARV2/catkin_ws/src/dynamixel_workbench/dynamixel_workbench_single_manager_gui
 
 //Value Computed by CMake
-dynamixel_workbench_toolbox_BINARY_DIR:STATIC=/home/samuel/Desktop/MARV2/catkin_ws/build/dynamixel-workbench/dynamixel_workbench_toolbox
+dynamixel_workbench_toolbox_BINARY_DIR:STATIC=/home/samuel/Desktop/MARV2/catkin_ws/build/dynamixel_workbench/dynamixel_workbench_toolbox
 
 //The directory containing a CMake configuration file for dynamixel_workbench_toolbox.
 dynamixel_workbench_toolbox_DIR:PATH=/home/samuel/Desktop/MARV2/catkin_ws/devel/share/dynamixel_workbench_toolbox/cmake
@@ -384,7 +384,7 @@ dynamixel_workbench_toolbox_DIR:PATH=/home/samuel/Desktop/MARV2/catkin_ws/devel/
 dynamixel_workbench_toolbox_LIB_DEPENDS:STATIC=general;dynamixel_sdk;general;/opt/ros/melodic/lib/libroscpp.so;general;/usr/lib/x86_64-linux-gnu/libboost_filesystem.so;general;/usr/lib/x86_64-linux-gnu/libboost_signals.so;general;/opt/ros/melodic/lib/librosconsole.so;general;/opt/ros/melodic/lib/librosconsole_log4cxx.so;general;/opt/ros/melodic/lib/librosconsole_backend_interface.so;general;/usr/lib/x86_64-linux-gnu/liblog4cxx.so;general;/usr/lib/x86_64-linux-gnu/libboost_regex.so;general;/opt/ros/melodic/lib/libroscpp_serialization.so;general;/opt/ros/melodic/lib/libxmlrpcpp.so;general;/opt/ros/melodic/lib/librostime.so;general;/opt/ros/melodic/lib/libcpp_common.so;general;/usr/lib/x86_64-linux-gnu/libboost_system.so;general;/usr/lib/x86_64-linux-gnu/libboost_thread.so;general;/usr/lib/x86_64-linux-gnu/libboost_chrono.so;general;/usr/lib/x86_64-linux-gnu/libboost_date_time.so;general;/usr/lib/x86_64-linux-gnu/libboost_atomic.so;general;/usr/lib/x86_64-linux-gnu/libpthread.so;general;/usr/lib/x86_64-linux-gnu/libconsole_bridge.so.0.4;
 
 //Value Computed by CMake
-dynamixel_workbench_toolbox_SOURCE_DIR:STATIC=/home/samuel/Desktop/MARV2/catkin_ws/src/dynamixel-workbench/dynamixel_workbench_toolbox
+dynamixel_workbench_toolbox_SOURCE_DIR:STATIC=/home/samuel/Desktop/MARV2/catkin_ws/src/dynamixel_workbench/dynamixel_workbench_toolbox
 
 //The directory containing a CMake configuration file for gencpp.
 gencpp_DIR:PATH=/opt/ros/melodic/share/gencpp/cmake
