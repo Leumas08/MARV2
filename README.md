@@ -1,11 +1,11 @@
 # MARV2
 
-#Instructions for Start-Up
+# Instructions for Start-Up
 
 # U2D2 Setup
 
-# sudo cp ./99-dynamixel-workbench-cdc.rules /etc/udev/rules.d/
-# sudo udevadm control --reload-rules
+## sudo cp ./99-dynamixel-workbench-cdc.rules /etc/udev/rules.d/
+## sudo udevadm control --reload-rules
 # sudo udevadm trigger
 #
 
