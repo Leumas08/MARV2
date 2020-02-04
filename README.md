@@ -22,7 +22,7 @@
 
 ## LIDAR
 
-#### Check Connection: sudo chmod a+rw /dev/ttyUSB0
+### Check Connection: sudo chmod a+rw /dev/ttyUSB0
 ### roslaunch rplidar_ros view_rplidar.launch
 
 ## Webcam
