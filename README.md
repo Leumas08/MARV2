@@ -2,7 +2,7 @@
 
 # Instructions for Start-Up
 
-# Sourcing ROs
+# Sourcing ROS
 
 ### source /opt/ros/melodic/setup.bash
 ### source ~/.bashrc
