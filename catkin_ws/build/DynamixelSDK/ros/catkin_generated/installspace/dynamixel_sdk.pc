@@ -1,8 +1,0 @@
-prefix=/home/samuel/Desktop/MARV2/catkin_ws/install
-
-Name: dynamixel_sdk
-Description: Description of dynamixel_sdk
-Version: 3.7.21
-Cflags: -I/home/samuel/Desktop/MARV2/catkin_ws/install/include
-Libs: -L/home/samuel/Desktop/MARV2/catkin_ws/install/lib -ldynamixel_sdk
-Requires: roscpp rospy
