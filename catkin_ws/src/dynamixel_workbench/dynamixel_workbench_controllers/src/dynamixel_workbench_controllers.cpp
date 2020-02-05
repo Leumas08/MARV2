@@ -543,17 +543,17 @@ void DynamixelController::commandVelocityCallback(const geometry_msgs::Twist::Co
 
   double velocity_constant_value = 1 / (wheel_radius_ * rpm * 0.10472);
 
-  wheel_velocity[FL_MOVE]  = robot_lin_vel - (robot_ang_vel * wheel_separation_ / 2);
-  wheel_velocity[FR_MOVE] = -1*(robot_lin_vel + (robot_ang_vel * wheel_separation_ / 2));
-  wheel_velocity[BL_MOVE]  = robot_lin_vel - (robot_ang_vel * wheel_separation_ / 2);
-  wheel_velocity[BR_MOVE] = -1*(robot_lin_vel + (robot_ang_vel * wheel_separation_ / 2));
+  wheel_velocity[FL_MOVE] =  robot_lin_vel - (robot_ang_vel * wheel_separation_ / 2);
+  wheel_velocity[FR_MOVE] =  (robot_lin_vel + (robot_ang_vel * wheel_separation_ / 2));
+  wheel_velocity[BL_MOVE] =  robot_lin_vel - (robot_ang_vel * wheel_separation_ / 2);
+  wheel_velocity[BR_MOVE] =  (robot_lin_vel + (robot_ang_vel * wheel_separation_ / 2));
 
 
 
-  dynamixel_velocity[FL_MOVE]  = wheel_velocity[FL_MOVE] * velocity_constant_value;
-  dynamixel_velocity[FR_MOVE] = wheel_velocity[FR_MOVE] * velocity_constant_value;
-  dynamixel_velocity[BL_MOVE]  = wheel_velocity[BL_MOVE] * velocity_constant_value;
-  dynamixel_velocity[BR_MOVE] = wheel_velocity[BR_MOVE] * velocity_constant_value;
+  dynamixel_velocity[FL_MOVE] = wheel_velocity[FL_MOVE] * velocity_constant_value;
+  dynamixel_velocity[FR_MOVE] = -1 * wheel_velocity[FR_MOVE] * velocity_constant_value;
+  dynamixel_velocity[BL_MOVE] = wheel_velocity[BL_MOVE] * velocity_constant_value;
+  dynamixel_velocity[BR_MOVE] = -1 * wheel_velocity[BR_MOVE] * velocity_constant_value;
 
 
 
