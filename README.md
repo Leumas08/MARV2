@@ -2,6 +2,12 @@
 
 # Instructions for Start-Up
 
+# Sourcing ROs
+
+### source /opt/ros/melodic/setup.bash
+### source ~/.bashrc
+### source devel/setup.bash
+
 ## U2D2 Setup
 
 ### sudo cp ./99-dynamixel-workbench-cdc.rules /etc/udev/rules.d/
