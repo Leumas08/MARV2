@@ -114,7 +114,7 @@ bool DynamixelController::loadDynamixels(void)
       return result;
     }
     else
-    {      
+    {
       ROS_INFO("Name : %s, ID : %d, Model Number : %d", dxl.first.c_str(), dxl.second, model_number);
     }
   }
@@ -218,12 +218,12 @@ bool DynamixelController::initSDKHandlers(void)
   }
 
   if (dxl_wb_->getProtocolVersion() == 2.0f)
-  {  
+  {
     uint16_t start_address = std::min(control_items_["Present_Position"]->address, control_items_["Present_Current"]->address);
 
-    /* 
+    /*
       As some models have an empty space between Present_Velocity and Present Current, read_length is modified as below.
-    */    
+    */
     // uint16_t read_length = control_items_["Present_Position"]->data_length + control_items_["Present_Velocity"]->data_length + control_items_["Present_Current"]->data_length;
     uint16_t read_length = control_items_["Present_Position"]->data_length + control_items_["Present_Velocity"]->data_length + control_items_["Present_Current"]->data_length+2;
 
@@ -417,8 +417,8 @@ void DynamixelController::readCallback(const ros::TimerEvent&)
     }
     else if(dxl_wb_->getProtocolVersion() == 1.0f)
     {
-      uint16_t length_of_data = control_items_["Present_Position"]->data_length + 
-                                control_items_["Present_Velocity"]->data_length + 
+      uint16_t length_of_data = control_items_["Present_Position"]->data_length +
+                                control_items_["Present_Velocity"]->data_length +
                                 control_items_["Present_Current"]->data_length;
       uint32_t get_all_data[length_of_data];
       uint8_t dxl_cnt = 0;
@@ -513,8 +513,16 @@ void DynamixelController::commandVelocityCallback(const geometry_msgs::Twist::Co
   double wheel_velocity[dynamixel_.size()];
   int32_t dynamixel_velocity[dynamixel_.size()];
 
-  const uint8_t LEFT = 0;
-  const uint8_t RIGHT = 1;
+  const uint8_t FL_MOVE = 0;
+  const uint8_t FR_MOVE = 1;
+  const uint8_t BL_MOVE = 2;
+  const uint8_t BR_MOVE = 3;
+
+  const uint8_t FL_TURN = 4;
+  const uint8_t FR_TURN = 5;
+  const uint8_t BL_TURN = 6;
+  const uint8_t BR_TURN = 7;
+
 
   double robot_lin_vel = msg->linear.x;
   double robot_ang_vel = msg->angular.z;
@@ -535,37 +543,19 @@ void DynamixelController::commandVelocityCallback(const geometry_msgs::Twist::Co
 
   double velocity_constant_value = 1 / (wheel_radius_ * rpm * 0.10472);
 
-  wheel_velocity[LEFT]  = robot_lin_vel - (robot_ang_vel * wheel_separation_ / 2);
-  wheel_velocity[RIGHT] = robot_lin_vel + (robot_ang_vel * wheel_separation_ / 2);
+  wheel_velocity[FL_MOVE]  = robot_lin_vel - (robot_ang_vel * wheel_separation_ / 2);
+  wheel_velocity[FR_MOVE] = -1*(robot_lin_vel + (robot_ang_vel * wheel_separation_ / 2));
+  wheel_velocity[BL_MOVE]  = robot_lin_vel - (robot_ang_vel * wheel_separation_ / 2);
+  wheel_velocity[BR_MOVE] = -1*(robot_lin_vel + (robot_ang_vel * wheel_separation_ / 2));
 
-  if (dxl_wb_->getProtocolVersion() == 2.0f)
-  {
-    if (strcmp(dxl_wb_->getModelName(id_array[0]), "XL-320") == 0)
-    {
-      if (wheel_velocity[LEFT] == 0.0f) dynamixel_velocity[LEFT] = 0;
-      else if (wheel_velocity[LEFT] < 0.0f) dynamixel_velocity[LEFT] = ((-1.0f) * wheel_velocity[LEFT]) * velocity_constant_value + 1023;
-      else if (wheel_velocity[LEFT] > 0.0f) dynamixel_velocity[LEFT] = (wheel_velocity[LEFT] * velocity_constant_value);
 
-      if (wheel_velocity[RIGHT] == 0.0f) dynamixel_velocity[RIGHT] = 0;
-      else if (wheel_velocity[RIGHT] < 0.0f)  dynamixel_velocity[RIGHT] = ((-1.0f) * wheel_velocity[RIGHT] * velocity_constant_value) + 1023;
-      else if (wheel_velocity[RIGHT] > 0.0f)  dynamixel_velocity[RIGHT] = (wheel_velocity[RIGHT] * velocity_constant_value);
-    }
-    else
-    {
-      dynamixel_velocity[LEFT]  = wheel_velocity[LEFT] * velocity_constant_value;
-      dynamixel_velocity[RIGHT] = wheel_velocity[RIGHT] * velocity_constant_value;
-    }
-  }
-  else if (dxl_wb_->getProtocolVersion() == 1.0f)
-  {
-    if (wheel_velocity[LEFT] == 0.0f) dynamixel_velocity[LEFT] = 0;
-    else if (wheel_velocity[LEFT] < 0.0f) dynamixel_velocity[LEFT] = ((-1.0f) * wheel_velocity[LEFT]) * velocity_constant_value + 1023;
-    else if (wheel_velocity[LEFT] > 0.0f) dynamixel_velocity[LEFT] = (wheel_velocity[LEFT] * velocity_constant_value);
 
-    if (wheel_velocity[RIGHT] == 0.0f) dynamixel_velocity[RIGHT] = 0;
-    else if (wheel_velocity[RIGHT] < 0.0f)  dynamixel_velocity[RIGHT] = ((-1.0f) * wheel_velocity[RIGHT] * velocity_constant_value) + 1023;
-    else if (wheel_velocity[RIGHT] > 0.0f)  dynamixel_velocity[RIGHT] = (wheel_velocity[RIGHT] * velocity_constant_value);
-  }
+  dynamixel_velocity[FL_MOVE]  = wheel_velocity[FL_MOVE] * velocity_constant_value;
+  dynamixel_velocity[FR_MOVE] = wheel_velocity[FR_MOVE] * velocity_constant_value;
+  dynamixel_velocity[BL_MOVE]  = wheel_velocity[BL_MOVE] * velocity_constant_value;
+  dynamixel_velocity[BR_MOVE] = wheel_velocity[BR_MOVE] * velocity_constant_value;
+
+
 
   result = dxl_wb_->syncWrite(SYNC_WRITE_HANDLER_FOR_GOAL_VELOCITY, id_array, dynamixel_.size(), dynamixel_velocity, 1, &log);
   if (result == false)
