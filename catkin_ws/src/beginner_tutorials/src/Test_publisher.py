@@ -7,12 +7,11 @@ def main():
 	rospy.init_node("Test_publisher")
 	pub = rospy.Publisher("Test", Test, queue_size=1)
 	r = rospy.Rate(1)
-
 	msg = Test()
+	msg.direction = 1
+	msg.turn = 85
+	msg.speed = 5
 	while not rospy.is_shutdown():
-		msg.direction = 1
-		msg.turn = 85
-		msg.speed = 5
 		pub.publish(msg)
 		r.sleep()
 
