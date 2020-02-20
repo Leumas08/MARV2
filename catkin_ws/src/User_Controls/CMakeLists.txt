@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 2.8.3)
-project(beginner_tutorials)
+project(User_Controls)
 
 ## Compile as C++11, supported in ROS Kinetic and newer
 # add_compile_options(-std=c++11)
@@ -52,6 +52,7 @@ add_message_files(
    FILES
    Test.msg
    movement.msg
+   Shield.msg
 )
 
 ## Generate services in the 'srv' folder

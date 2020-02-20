@@ -1,10 +1,10 @@
 <?xml version="1.0"?>
 <package format="2">
-  <name>beginner_tutorials</name>
-  <version>0.0.0</version>
-  <description>The beginner_tutorials package</description>
+  <name>User_Controls</name>
+  <version>1.0.0</version>
+  <description>Package for all User Controls</description>
 
-  <maintainer email="samuel@todo.todo">samuel</maintainer>
+  <maintainer email="swp0001@mix.wvu.edu">samuel</maintainer>
 
 
   <license>TODO</license>
