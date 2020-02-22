@@ -2,14 +2,26 @@
 # Control table item has to be set Camel_Case and not included whitespace
 # You are supposed to set at least Dynamixel ID
 # This example is compatible with Dynamixel using protocol 2.0
-FL:
+FR:
+  ID: 5
+  Return_Delay_Time: 0
+  Operating_Mode: 1
+  Profile_Acceleration: 0
+  Profile_Velocity: 0
+FRF:
+  ID: 6
+  Return_Delay_Time: 0
+  Operating_Mode: 1
+  Profile_Acceleration: 0
+  Profile_Velocity: 0
+FR1:
   ID: 7
   Return_Delay_Time: 0
   Operating_Mode: 1
   Profile_Acceleration: 0
   Profile_Velocity: 0
-FR:
-  ID: 4
+FRed2:
+  ID: 8
   Return_Delay_Time: 0
   Operating_Mode: 1
   Profile_Acceleration: 0

@@ -521,7 +521,7 @@ void DynamixelController::commandVelocityCallback(const geometry_msgs::Twist::Co
   const uint8_t FL_TURN = 4;
   const uint8_t FR_TURN = 5;
   const uint8_t BL_TURN = 6;
-  const uint8_t BR_TURN = 7;
+  //const uint8_t BR_TURN = 7;
 
 
   double robot_lin_vel = msg->linear.x;
@@ -547,8 +547,6 @@ void DynamixelController::commandVelocityCallback(const geometry_msgs::Twist::Co
   wheel_velocity[FR_MOVE] =  (robot_lin_vel + (robot_ang_vel * wheel_separation_ / 2));
   wheel_velocity[BL_MOVE] =  robot_lin_vel - (robot_ang_vel * wheel_separation_ / 2);
   wheel_velocity[BR_MOVE] =  (robot_lin_vel + (robot_ang_vel * wheel_separation_ / 2));
-
-
 
   dynamixel_velocity[FL_MOVE] = wheel_velocity[FL_MOVE] * velocity_constant_value;
   dynamixel_velocity[FR_MOVE] = -1 * wheel_velocity[FR_MOVE] * velocity_constant_value;

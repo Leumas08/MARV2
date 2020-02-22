@@ -21,10 +21,10 @@ Controls via Keyboard
 
 GENERIC MOTION CONTROLS
 
-w : advance @ set velocity
-s : retreat @ set velocity
-a : turn tires 90 degrees left
-d : turn tires 90 degrees right
+w : move North (based on starting position)
+x : move South
+a : move West
+d : move East
 
 PERCISE MOTION CONTROLS
 
@@ -44,43 +44,36 @@ r : spin the robot around a full 180 degrees
 
 CTRL-C to quit
 """
-#change the velocity used in advance_retreat
+# Dictionary for Changing Set Velocity
 velocity_dict = {
     readchar.key.UP : 10,
     readchar.key.DOWN : -10,
 }
 
-#set angle of tires
-turn_precise_dict = {
-    readchar.key.LEFT : -10,
-    readchar.key.RIGHT : 10,
+# Dictionary for Setting Directional Angle Manually
+angular_dict = {
+    readchar.key.LEFT : 10,
+    readchar.key.RIGHT : -10,
 }
 
-#90 degree turn around (May just be one direction)
-turn_90_dict = {
-    'a': 90,
-    'd': -90,
+# Dictionary for Goal Movement Direction
+goal_direction_dict = {
+    'w' : 8,
+    'd' : 4,
+    'x' : 2,
+    'a' : 1
 }
 
-#Move Forward/Backward
-advance_retreat_dict = {
-    'w': 1,
-    's': -1,
-}
-
-#180 degree about-face
+# Dictionary for Doing and About Face
 about_face_dict = {
-    'r' : 1,
+    'r' : 1
 }
 
-#Arm raising/lowering
+# Dictionary for Controlling Arm
 arm_dict = {
     'o' : 1,
     'l' : 1,
 }
-
-def values(vel, ang):
-    return "currently:\tvelocity: %s\tangle: %s " % (vel, ang)
 
 def E_STOP(data):
     global e_stop
@@ -98,58 +91,74 @@ if __name__=="__main__":
 
     velocity = rospy.get_param("~velocity", 0)
     angle = rospy.get_param("~angle", 0)
-    motion = 0;
     arm_speed = 0
     up_down = 0;
+    goal_direction = 0;
+    previous_direction = 8;
     try:
         print(msg)
-        print(values(velocity, angle))
         while 1:
             key = readchar.readkey()
             aboutface = 0
+            if(goal_direction != 0):
+                previous_direction = goal_direction
+            #If Velocity Key Hit
             if key in velocity_dict:
                 velocity += velocity_dict[key]
                 if velocity > 100:
 		           velocity = 100
                 elif velocity < -100:
 		           velocity = -100
-                print("Velocity Set to: " + str(velocity) + "\n")
-            elif key in advance_retreat_dict:
-                motion = advance_retreat_dict[key];
-                if motion == 1:
-                    print("Robot Is Moving Forward\n")
+                print("Velocity Set to: " + str(velocity) + "% \n")
+
+            # If Goal Direction Key Hit
+            elif key in goal_direction_dict:
+                goal_direction = goal_direction_dict[key];
+                if goal_direction == 8:
+                    print("Goal Direction set to North!\n")
+                elif goal_direction == 4:
+                    print("Goal Direction set to East!\n")
+                elif goal_direction == 2:
+                    print("Goal Direction set to South!\n")
                 else:
-                    print("Robot Is Moving Backward\n")
-            elif key in turn_precise_dict:
-                angle += turn_precise_dict[key]
+                    print("Goal Direction set to West!\n")
+
+            # If Manual Angle Key Hit
+            elif key in angular_dict:
+                angle += angular_dict[key]
                 if angle > 90:
                     angle = 90
                 elif angle < -90:
                     angle = -90
                 print("Angle is Set to: " + str(angle) + " degrees\n")
-            elif key in turn_90_dict:
-                angle = turn_90_dict[key]
-                print("Angle is Set to: " + str(angle) + " degrees\n")
+
+            # If About Face Key Hit
             elif key in about_face_dict:
                 aboutface = 1
                 print("Turning Robot Around\n")
+
+            # If Arm control key Hit
             elif key in arm_dict:
                 if arm_dict[key] == 1:
                     arm_speed = 5
                 else:
                     arm_speed = 0
+
+            # Anything Else Will Stop the Vehicle
             else:
                 velocity = 0
                 angle = 0
-                motion = 0
+                goal_direction = 0
                 aboutface = 0
+                print("Stopping All Movement!\n")
                 if key == '\x03':
                     break
             move = movement()
             move.velocity = velocity
             move.angle = angle
-            move.motion = motion
+            move.goal_direction = goal_direction
             move.about_face = aboutface
+            #move.previous_direction = previous_direction
             pub1.publish(move)
 
             arm = Test()
@@ -163,8 +172,9 @@ if __name__=="__main__":
         move = movement()
         move.velocity = 0
         move.angle = 0
-        move.motion = 0
+        move.goal_direction = 0
         move.about_face = 0
+        #move.previous_direction = 0
         pub1.publish(move)
 
         arm = Test()
