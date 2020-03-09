@@ -52,21 +52,22 @@ DynamixelController::~DynamixelController(){}
 
 bool DynamixelController::initWorkbench(const std::string port_name, const uint32_t baud_rate)
 {
-  bool result = false;
+  bool result1 = false;
+  bool result2 = false;
   const char* log;
 
-  result = dxl_wb_->init(port_name.c_str(), baud_rate, &log);
-  if (result == false)
+  result1 = dxl_wb_->init(port_name.c_str(), baud_rate, &log);
+  if (result1 == false)
   {
     ROS_ERROR("%s", log);
   }
-  result = dxl_wb_turn_->init(port_name.c_str(), baud_rate, &log);
-  if (result == false)
+  result2 = dxl_wb_turn_->init(port_name.c_str(), baud_rate, &log);
+  if (result2 == false)
   {
     ROS_ERROR("%s", log);
   }
 
-  return result;
+  return result1 && result2;
 }
 
 bool DynamixelController::getDynamixelsInfo(const std::string yaml_file)
