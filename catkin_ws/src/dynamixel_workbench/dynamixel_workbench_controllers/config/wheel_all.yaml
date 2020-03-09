@@ -37,27 +37,27 @@ back_right_move:
 front_left_turn:
   ID: 3
   Return_Delay_Time: 0
-  Operating_Mode: 3
+  Operating_Mode: 1
   Profile_Acceleration: 0
-  Profile_Velocity: 2
+  Profile_Velocity: 0
 
 front_right_turn:
   ID: 2
   Return_Delay_Time: 0
-  Operating_Mode: 3
+  Operating_Mode: 1
   Profile_Acceleration: 0
-  Profile_Velocity: 2
+  Profile_Velocity: 0
 
 back_left_turn:
   ID: 4
   Return_Delay_Time: 0
-  Operating_Mode: 3
+  Operating_Mode: 1
   Profile_Acceleration: 0
   Profile_Velocity: 0
 
 back_right_turn:
   ID: 1
   Return_Delay_Time: 0
-  Operating_Mode: 3
+  Operating_Mode: 1
   Profile_Acceleration: 0
   Profile_Velocity: 0

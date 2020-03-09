@@ -34,6 +34,9 @@
 
 #include <dynamixel_workbench_controllers/trajectory_generator.h>
 
+// Custom Control Message
+#include <user_controls/movement.h>
+
 // SYNC_WRITE_HANDLER
 #define SYNC_WRITE_HANDLER_FOR_GOAL_POSITION 0
 #define SYNC_WRITE_HANDLER_FOR_GOAL_VELOCITY 1
@@ -73,6 +76,7 @@ class DynamixelController
 
   // Dynamixel Workbench Parameters
   DynamixelWorkbench *dxl_wb_;
+  DynamixelWorkbench *dxl_wb_turn_;
 
   std::map<std::string, uint32_t> dynamixel_;
   std::map<std::string, const ControlItem*> control_items_;
@@ -102,12 +106,21 @@ class DynamixelController
   ~DynamixelController();
 
   bool initWorkbench(const std::string port_name, const uint32_t baud_rate);
+
   bool getDynamixelsInfo(const std::string yaml_file);
   bool loadDynamixels(void);
   bool initDynamixels(void);
   bool initControlItems(void);
   bool initSDKHandlers(void);
   bool getPresentPosition(std::vector<std::string> dxl_name);
+
+  bool getDynamixelsInfo_turn(const std::string yaml_file);
+  bool loadDynamixels_turn(void);
+  bool initDynamixels_turn(void);
+  bool initControlItems_turn(void);
+  bool initSDKHandlers_turn(void);
+  bool getPresentPosition_turn(std::vector<std::string> dxl_name);
+
 
   double getReadPeriod(){return read_period_;}
   double getWritePeriod(){return write_period_;}
@@ -122,7 +135,7 @@ class DynamixelController
   void writeCallback(const ros::TimerEvent&);
   void publishCallback(const ros::TimerEvent&);
 
-  void commandVelocityCallback(const geometry_msgs::Twist::ConstPtr &msg);
+  void movementCallback(const user_controls::movement::ConstPtr &msg);
   void trajectoryMsgCallback(const trajectory_msgs::JointTrajectory::ConstPtr &msg);
   bool dynamixelCommandMsgCallback(dynamixel_workbench_msgs::DynamixelCommand::Request &req,
                                    dynamixel_workbench_msgs::DynamixelCommand::Response &res);

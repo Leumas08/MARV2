@@ -1,0 +1,4 @@
+<launch>
+  <arg name="namespace"               default="user_controls"/>
+  <node name="operator" pkg="user_controls" type="operator" required="true" output="screen" ns="$(arg namespace)"/>
+</launch>

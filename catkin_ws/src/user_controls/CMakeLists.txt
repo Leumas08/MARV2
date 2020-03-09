@@ -150,6 +150,10 @@ include_directories(
 #   ${catkin_LIBRARIES}
 # )
 
+add_executable(operator src/operator.cpp)
+add_dependencies(operator user_controls_generate_messages_cpp)
+target_link_libraries(operator ${catkin_LIBRARIES})
+
 #############
 ## Install ##
 #############

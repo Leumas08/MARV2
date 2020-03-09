@@ -23,4 +23,5 @@
   <depend>cmake_modules</depend>
   <depend>yaml-cpp</depend>
   <depend>eigen</depend>
+  <depend>user_controls</depend>
 </package>
