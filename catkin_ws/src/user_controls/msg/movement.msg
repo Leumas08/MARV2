@@ -11,5 +11,5 @@ int8 goal_direction
 #about_face = 1 if the robot is to turn completely around and 0 if not
 int8 about_face
 
-#previous_direction is the previously inputted direction
-int8 previous_direction
+#arm controls; 1-raise, 2-lower, anything else is stop
+int8 arm_controls

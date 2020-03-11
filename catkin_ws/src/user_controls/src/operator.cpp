@@ -17,7 +17,6 @@
 #define SOUTH          0x78
 #define WEST           0x61
 #define EAST           0x64
-#define STOPS          0x73
 
 // Velocity Controls
 #define INCREASE_VEL   0x57
@@ -26,6 +25,11 @@
 // Arm Controls
 #define RAISE_ARM      0x6F
 #define LOWER_ARM      0x6C
+
+// Special Controls
+#define ABOUTFACE      0x62
+#define STOP1          0x73
+#define STOP2          0x53
 
 int getch(void)
 {
@@ -94,17 +98,27 @@ int main(int argc, char **argv)
   "\n\
   Control Your Mobile Robot! \n\
   --------------------------- \n\
-  Moving around:\n\
+  Compass Direction:\n\
           w\n\
-     a    s    d\n\
+     a         d\n\
           x\n\
   \n\
-  w/x : increase/decrease linear velocity\n\
-  a/d : increase/decrease angular velocity\n\
+  w: North\n\
+  d: East\n\
+  x: South\n\
+  a: West\n\
   \n\
-  s : force stop\n\
+  Speed Controls: \n\
+  W/X : increase/decrease base velocity\n\
   \n\
-  CTRL-C to quit\n\
+  Arm Controls: \n\
+  o: raise arm\n\
+  l: lower arm\n\
+  \n\
+  Unique Controls: \n\
+  b: aboutface\n\
+  s/S: STOP\n\
+  CTRL-C: quit\n\
   ";
 
   ROS_INFO("%s", msg.c_str());
@@ -113,10 +127,18 @@ int main(int argc, char **argv)
 
   while(ros::ok())
   {
+    // Reset about_face
+    if(controls.about_face == 1) {
+      controls.about_face = 0;
+    }
+
+    // If character available
     if (kbhit())
     {
+      // Get New Character
       char c = getch();
 
+      // Evaluate Input
       if (c == NORTH)
       {
         controls.goal_direction = 8;
@@ -137,12 +159,6 @@ int main(int argc, char **argv)
         controls.goal_direction = 4;
         ROS_INFO("goal_direction: %d", controls.goal_direction);
       }
-      else if (c == STOPS)
-      {
-        controls.goal_direction  = 0.0f;
-        controls.goal_direction = 0.0f;
-        ROS_INFO("goal_direction: %d", controls.goal_direction);
-      }
       else if (c == INCREASE_VEL)
       {
         controls.velocity  = controls.velocity + 1;
@@ -155,17 +171,25 @@ int main(int argc, char **argv)
       }
       else if (c == RAISE_ARM)
       {
-        controls.about_face  = 1;
-        ROS_INFO("about_face: %d", controls.about_face);
+        controls.arm_controls  = 1;
+        ROS_INFO("arm is being raised");
       }
       else if (c == LOWER_ARM)
       {
-        controls.about_face  = 0;
-        ROS_INFO("about_face: %d", controls.about_face);
+        controls.arm_controls  = 2;
+        ROS_INFO("arm is being lowered");
       }
-      else
+      else if (c == ABOUTFACE)
       {
-        controls.goal_direction  = controls.goal_direction;
+        controls.goal_direction = 0;
+        controls.about_face = 1;
+      }
+      else if (c == STOP1 || c == STOP2)
+      {
+        controls.goal_direction  = 0;
+        controls.arm_controls = 0;
+        ROS_INFO("goal_direction: %d", controls.goal_direction);
+        ROS_INFO("arm has stopped moving");
       }
     }
 
