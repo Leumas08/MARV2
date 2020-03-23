@@ -50,6 +50,7 @@ DynamixelController::DynamixelController()
 
 DynamixelController::~DynamixelController(){}
 
+// Modified for Forward and Turn
 bool DynamixelController::initWorkbench(const std::string port_name, const uint32_t baud_rate)
 {
   bool result1 = false;
@@ -70,6 +71,7 @@ bool DynamixelController::initWorkbench(const std::string port_name, const uint3
   return result1 && result2;
 }
 
+// This will need modified if Two YAMLs are neccessary
 bool DynamixelController::getDynamixelsInfo(const std::string yaml_file)
 {
   YAML::Node dynamixel;
@@ -105,24 +107,28 @@ bool DynamixelController::getDynamixelsInfo(const std::string yaml_file)
   return true;
 }
 
+
 bool DynamixelController::loadDynamixels(void)
 {
   bool result = false;
   const char* log;
-
+  int i = 0;
   for (auto const& dxl:dynamixel_)
   {
-    uint16_t model_number = 0;
-    result = dxl_wb_->ping((uint8_t)dxl.second, &model_number, &log);
-    if (result == false)
-    {
-      ROS_ERROR("%s", log);
-      ROS_ERROR("Can't find Dynamixel ID '%d'", dxl.second);
-      return result;
-    }
-    else
-    {
-      ROS_INFO("Name : %s, ID : %d, Model Number : %d", dxl.first.c_str(), dxl.second, model_number);
+    if (i < 4) {
+      uint16_t model_number = 0;
+      result = dxl_wb_->ping((uint8_t)dxl.second, &model_number, &log);
+      if (result == false)
+      {
+        ROS_ERROR("%s", log);
+        ROS_ERROR("Can't find Dynamixel ID '%d'", dxl.second);
+        return result;
+      }
+      else
+      {
+        ROS_INFO("Name : %s, ID : %d, Model Number : %d", dxl.first.c_str(), dxl.second, model_number);
+      }
+      i++;
     }
   }
 
