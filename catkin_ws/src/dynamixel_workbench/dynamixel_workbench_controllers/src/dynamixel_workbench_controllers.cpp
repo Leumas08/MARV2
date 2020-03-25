@@ -115,7 +115,7 @@ bool DynamixelController::loadDynamixels(void)
   int i = 0;
   for (auto const& dxl:dynamixel_)
   {
-    if (i < 4) {
+    if (i < 10) {
       uint16_t model_number = 0;
       result = dxl_wb_->ping((uint8_t)dxl.second, &model_number, &log);
       if (result == false)
@@ -535,8 +535,8 @@ void DynamixelController::movementCallback(const user_controls::movement::ConstP
 
   const uint8_t FL_TURN = 4;
   const uint8_t FR_TURN = 5;
-  const uint8_t BL_TURN = 6;
-  const uint8_t BR_TURN = 7;
+  const uint8_t BR_TURN = 6;
+  //const uint8_t BL_TURN = 7;
 
 
   int16_t goal_direction = msg->goal_direction;
@@ -556,24 +556,61 @@ void DynamixelController::movementCallback(const user_controls::movement::ConstP
 //       = r * ((RPM * Goal_Velocity) * 0.10472)		=> Goal_Velocity = V / (r * RPM * 0.10472) = V * VELOCITY_CONSTATNE_VALUE
 
   double velocity_constant_value = 1; /// (wheel_radius_ * rpm * 0.10472);
-
+  
   if (goal_direction == 8) {
     wheel_velocity[FL_MOVE] =  robot_lin_vel;
     wheel_velocity[FR_MOVE] =  robot_lin_vel;
     wheel_velocity[BL_MOVE] =  robot_lin_vel;
     wheel_velocity[BR_MOVE] =  robot_lin_vel;
+
+    wheel_velocity[FL_TURN] =  0;
+    wheel_velocity[FR_TURN] =  0;
+    wheel_velocity[BR_TURN] =  0;
+    //wheel_velocity[FL_TURN] =  0;
+  }
+  else if (goal_direction == 4) {
+    wheel_velocity[FL_MOVE] =  0;
+    wheel_velocity[FR_MOVE] =  0;
+    wheel_velocity[BL_MOVE] =  0;
+    wheel_velocity[BR_MOVE] =  0;
+
+    wheel_velocity[FL_TURN] =  robot_lin_vel;
+    wheel_velocity[FR_TURN] =  robot_lin_vel;
+    wheel_velocity[BR_TURN] =  robot_lin_vel;
+    //wheel_velocity[FL_TURN] =  robot_lin_vel;
   }
   else if (goal_direction == 2) {
     wheel_velocity[FL_MOVE] =  -1 * robot_lin_vel;
     wheel_velocity[FR_MOVE] =  -1 * robot_lin_vel;
     wheel_velocity[BL_MOVE] =  -1 * robot_lin_vel;
     wheel_velocity[BR_MOVE] =  -1 * robot_lin_vel;
+
+    wheel_velocity[FL_TURN] =  0;
+    wheel_velocity[FR_TURN] =  0;
+    wheel_velocity[BR_TURN] =  0;
+    //wheel_velocity[FL_TURN] =  0;
+  }
+  else if (goal_direction == 1) {
+    wheel_velocity[FL_MOVE] =  0;
+    wheel_velocity[FR_MOVE] =  0;
+    wheel_velocity[BL_MOVE] =  0;
+    wheel_velocity[BR_MOVE] =  0;
+
+    wheel_velocity[FL_TURN] = -1 * robot_lin_vel;
+    wheel_velocity[FR_TURN] = -1 * robot_lin_vel;
+    wheel_velocity[BR_TURN] = -1 * robot_lin_vel;
+    //wheel_velocity[FL_TURN] = -1 * robot_lin_vel;
   }
   else {
     wheel_velocity[FL_MOVE] =  0;
     wheel_velocity[FR_MOVE] =  0;
     wheel_velocity[BL_MOVE] =  0;
     wheel_velocity[BR_MOVE] =  0;
+
+    wheel_velocity[FL_TURN] =  0;
+    wheel_velocity[FR_TURN] =  0;
+    wheel_velocity[BR_TURN] =  0;
+    //wheel_velocity[FL_TURN] =  0;
   }
 
   dynamixel_velocity[FL_MOVE] = wheel_velocity[FL_MOVE] * velocity_constant_value;
@@ -581,12 +618,24 @@ void DynamixelController::movementCallback(const user_controls::movement::ConstP
   dynamixel_velocity[BL_MOVE] = wheel_velocity[BL_MOVE] * velocity_constant_value;
   dynamixel_velocity[BR_MOVE] = -1 * wheel_velocity[BR_MOVE] * velocity_constant_value;
 
-  //dynamixel_velocity[FL_TURN] = 0;
-  //dynamixel_velocity[FR_TURN] = 0;
-  //dynamixel_velocity[BL_TURN] = 0;
-  //dynamixel_velocity[BR_TURN] = 0;
+  dynamixel_velocity[FL_TURN] = wheel_velocity[FL_TURN] * velocity_constant_value;;
+  dynamixel_velocity[FR_TURN] = wheel_velocity[FR_TURN] * velocity_constant_value;;
+  dynamixel_velocity[BR_TURN] = wheel_velocity[BR_TURN] * velocity_constant_value;;
+  // dynamixel_velocity[BL_TURN] = wheel_velocity[BL_TURN] * velocity_constant_value;
 
-  result = dxl_wb_->syncWrite(SYNC_WRITE_HANDLER_FOR_GOAL_VELOCITY, id_array, dynamixel_.size(), dynamixel_velocity, 1, &log);
+  // Send data to dynamixels
+  result = dxl_wb_->itemWrite(5, "Goal_Velocity", dynamixel_velocity[FL_MOVE],&log);
+  result = dxl_wb_->itemWrite(7, "Goal_Velocity", dynamixel_velocity[FR_MOVE],&log);
+  result = dxl_wb_->itemWrite(6, "Goal_Velocity", dynamixel_velocity[BL_MOVE],&log);
+  result = dxl_wb_->itemWrite(8, "Goal_Velocity", dynamixel_velocity[BR_MOVE],&log);
+
+  result = dxl_wb_->itemWrite(2, "Goal_Velocity", dynamixel_velocity[FL_TURN] ,&log);
+  result = dxl_wb_->itemWrite(3, "Goal_Velocity", dynamixel_velocity[FR_TURN] ,&log);
+  result = dxl_wb_->itemWrite(4, "Goal_Velocity", dynamixel_velocity[BR_TURN] ,&log);
+  //result = dxl_wb_->itemWrite(1, "Goal_Velocity", dynamixel_velocity[BL_TURN] ,&log);
+
+
+  //result = dxl_wb_->syncWrite(SYNC_WRITE_HANDLER_FOR_GOAL_VELOCITY, id_array, dynamixel_.size(), dynamixel_velocity, 1, &log);
   if (result == false)
   {
     ROS_ERROR("%s", log);

@@ -6,28 +6,28 @@
 #Motion
 
 front_left_move:
-  ID: 8
+  ID: 5
   Return_Delay_Time: 0
   Operating_Mode: 1
   Profile_Acceleration: 0
   Profile_Velocity: 0
 
 front_right_move:
-  ID: 6
-  Return_Delay_Time: 0
-  Operating_Mode: 1
-  Profile_Acceleration: 0
-  Profile_Velocity: 0
-
-back_left_move:
   ID: 7
   Return_Delay_Time: 0
   Operating_Mode: 1
   Profile_Acceleration: 0
   Profile_Velocity: 0
 
+back_left_move:
+  ID: 6
+  Return_Delay_Time: 0
+  Operating_Mode: 1
+  Profile_Acceleration: 0
+  Profile_Velocity: 0
+
 back_right_move:
-  ID: 5
+  ID: 8
   Return_Delay_Time: 0
   Operating_Mode: 1
   Profile_Acceleration: 0
@@ -35,29 +35,29 @@ back_right_move:
 
 #Turning
 front_left_turn:
-  ID: 3
-  Return_Delay_Time: 0
-  Operating_Mode: 1
-  Profile_Acceleration: 0
-  Profile_Velocity: 0
-
-front_right_turn:
   ID: 2
   Return_Delay_Time: 0
   Operating_Mode: 1
   Profile_Acceleration: 0
   Profile_Velocity: 0
 
-back_left_turn:
-  ID: 4
+front_right_turn:
+  ID: 3
   Return_Delay_Time: 0
   Operating_Mode: 1
   Profile_Acceleration: 0
   Profile_Velocity: 0
 
 back_right_turn:
-  ID: 1
+  ID: 4
   Return_Delay_Time: 0
   Operating_Mode: 1
   Profile_Acceleration: 0
   Profile_Velocity: 0
+
+#back_right_turn:
+#  ID: 1
+#  Return_Delay_Time: 0
+#  Operating_Mode: 1
+#  Profile_Acceleration: 0
+#  Profile_Velocity: 0

@@ -7,7 +7,7 @@
   <arg name="use_joint_state"         default="false"/>
   <arg name="use_cmd_vel"             default="true"/>
 
-  <param name="dynamixel_info"          value="$(find dynamixel_workbench_controllers)/config/forward_wheels.yaml"/>
+  <param name="dynamixel_info"          value="$(find dynamixel_workbench_controllers)/config/all_wheels.yaml"/>
 
   <node name="$(arg namespace)" pkg="dynamixel_workbench_controllers" type="dynamixel_workbench_controllers"
         required="true" output="screen" args="$(arg usb_port) $(arg dxl_baud_rate)">
