@@ -520,6 +520,12 @@ void DynamixelController::publishCallback(const ros::TimerEvent&)
 
 //Modified by Samuel Price
 //2.4.2020
+const uint8_t UP = 0;
+const uint8_t DOWN = 1;
+const uint8_t LEFT = 2;
+const uint8_t RIGHT = 3;
+uint8_t robot_cur_dir = UP;
+
 void DynamixelController::movementCallback(const user_controls::movement::ConstPtr &msg)
 {
   bool result = false;
