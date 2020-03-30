@@ -618,9 +618,9 @@ void DynamixelController::movementCallback(const user_controls::movement::ConstP
   dynamixel_velocity[BL_MOVE] = wheel_velocity[BL_MOVE] * velocity_constant_value;
   dynamixel_velocity[BR_MOVE] = -1 * wheel_velocity[BR_MOVE] * velocity_constant_value;
 
-  //dynamixel_velocity[FL_TURN] = wheel_velocity[FL_TURN] * velocity_constant_value;;
-  //dynamixel_velocity[FR_TURN] = wheel_velocity[FR_TURN] * velocity_constant_value;;
-  //dynamixel_velocity[BR_TURN] = wheel_velocity[BR_TURN] * velocity_constant_value;;
+  dynamixel_velocity[FL_TURN] = wheel_velocity[FL_TURN] * velocity_constant_value;;
+  dynamixel_velocity[FR_TURN] = wheel_velocity[FR_TURN] * velocity_constant_value;;
+  dynamixel_velocity[BR_TURN] = wheel_velocity[BR_TURN] * velocity_constant_value;;
   // dynamixel_velocity[BL_TURN] = wheel_velocity[BL_TURN] * velocity_constant_value;
 
   // Send data to dynamixels
