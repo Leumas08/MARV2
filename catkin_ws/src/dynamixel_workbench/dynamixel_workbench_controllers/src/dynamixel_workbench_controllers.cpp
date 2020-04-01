@@ -520,10 +520,18 @@ void DynamixelController::publishCallback(const ros::TimerEvent&)
 
 //Modified by Samuel Price
 //2.4.2020
+<<<<<<< HEAD
 int16_t previous_direction = 0;
 int16_t forward_pos[4] = {0, 3100, 3300, 3430};
 int16_t sideway_pos[4] = {0, 4019, 2300, 4450};
 int16_t turn_pos[4] = {0, 3588, 2870, 4024};
+=======
+const uint8_t UP = 0;
+const uint8_t DOWN = 1;
+const uint8_t LEFT = 2;
+const uint8_t RIGHT = 3;
+uint8_t robot_cur_dir = UP;
+>>>>>>> 534dbcba516e7212a778fcb382118e3718940096
 
 void DynamixelController::movementCallback(const user_controls::movement::ConstPtr &msg)
 {
