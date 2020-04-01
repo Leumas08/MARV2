@@ -13,3 +13,9 @@ int8 about_face
 
 #arm controls; 1-raise, 2-lower, anything else is stop
 int8 arm_controls
+
+#dynamixel manipulator value; represents an id of a turning dynamixel that needs to be corrected manually
+int8 dyna_id
+
+#value to either increase or decrease the position of the given dynamixel
+int16 dyna_pos

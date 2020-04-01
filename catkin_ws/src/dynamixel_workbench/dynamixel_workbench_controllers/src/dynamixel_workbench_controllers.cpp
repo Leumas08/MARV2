@@ -520,6 +520,11 @@ void DynamixelController::publishCallback(const ros::TimerEvent&)
 
 //Modified by Samuel Price
 //2.4.2020
+int16_t previous_direction = 0;
+int16_t forward_pos[4] = {0, 3100, 3300, 3430};
+int16_t sideway_pos[4] = {0, 4019, 2300, 4450};
+int16_t turn_pos[4] = {0, 3588, 2870, 4024};
+
 void DynamixelController::movementCallback(const user_controls::movement::ConstPtr &msg)
 {
   bool result = false;
@@ -535,8 +540,8 @@ void DynamixelController::movementCallback(const user_controls::movement::ConstP
 
   const uint8_t FL_TURN = 4;
   const uint8_t FR_TURN = 5;
+  //const uint8_t BL_TURN = 6;
   const uint8_t BR_TURN = 6;
-  //const uint8_t BL_TURN = 7;
 
 
   int16_t goal_direction = msg->goal_direction;
@@ -555,51 +560,65 @@ void DynamixelController::movementCallback(const user_controls::movement::ConstP
 //  V = r * w = r * (RPM * 0.10472) (Change rad/sec to RPM)
 //       = r * ((RPM * Goal_Velocity) * 0.10472)		=> Goal_Velocity = V / (r * RPM * 0.10472) = V * VELOCITY_CONSTATNE_VALUE
 
-  double velocity_constant_value = 1; /// (wheel_radius_ * rpm * 0.10472);
+
+  // Add correction to dyna position value
+  if (msg->dyna_id != 0){
+    if(msg->dyna_pos < 4000 && msg->dyna_pos > 0){
+      if(previous_direction == 8 || previous_direction == 2){
+        forward_pos[msg->dyna_id - 1] += msg->dyna_pos;
+      }
+      if(previous_direction == 4 || previous_direction == 1){
+        sideway_pos[msg->dyna_id - 1] += msg->dyna_pos;
+      }
+    }
+  }
+
+  double velocity_constant_value = 1; /// (wheel_radius_ * rpm * 0.10472)
 
   if (goal_direction == 8) {
     wheel_velocity[FL_MOVE] =  robot_lin_vel;
-    wheel_velocity[FR_MOVE] =  robot_lin_vel;
+    wheel_velocity[FR_MOVE] =  -1 * robot_lin_vel;
     wheel_velocity[BL_MOVE] =  robot_lin_vel;
-    wheel_velocity[BR_MOVE] =  robot_lin_vel;
+    wheel_velocity[BR_MOVE] =  -1 * robot_lin_vel;
 
-    wheel_velocity[FL_TURN] =  0;
-    wheel_velocity[FR_TURN] =  0;
-    wheel_velocity[BR_TURN] =  0;
-    //wheel_velocity[FL_TURN] =  0;
+    //result = dxl_wb_->goalPosition(1, forward_pos[0],&log);
+    result = dxl_wb_->goalPosition(2, forward_pos[1],&log);
+    result = dxl_wb_->goalPosition(3, forward_pos[2],&log);
+    result = dxl_wb_->goalPosition(4, forward_pos[3],&log);
   }
   else if (goal_direction == 4) {
-    wheel_velocity[FL_MOVE] =  0;
-    wheel_velocity[FR_MOVE] =  0;
-    wheel_velocity[BL_MOVE] =  0;
-    wheel_velocity[BR_MOVE] =  0;
+    wheel_velocity[FL_MOVE] =  robot_lin_vel;
+    wheel_velocity[FR_MOVE] =  -1 * robot_lin_vel;
+    wheel_velocity[BL_MOVE] =  robot_lin_vel;
+    wheel_velocity[BR_MOVE] =  -1 * robot_lin_vel;
 
-    //result = dxl_wb_->goalPosition(2, ,&log);
-    //result = dxl_wb_->goalPosition(3, ,&log);
-    //result = dxl_wb_->goalPosition(4, ,&log);
     //result = dxl_wb_->goalPosition(1, ,&log);
+    result = dxl_wb_->goalPosition(2, sideway_pos[1],&log);
+    result = dxl_wb_->goalPosition(3, sideway_pos[2],&log);
+    result = dxl_wb_->goalPosition(4, sideway_pos[3],&log);
+
   }
   else if (goal_direction == 2) {
     wheel_velocity[FL_MOVE] =  -1 * robot_lin_vel;
-    wheel_velocity[FR_MOVE] =  -1 * robot_lin_vel;
+    wheel_velocity[FR_MOVE] =  robot_lin_vel;
     wheel_velocity[BL_MOVE] =  -1 * robot_lin_vel;
-    wheel_velocity[BR_MOVE] =  -1 * robot_lin_vel;
+    wheel_velocity[BR_MOVE] =  robot_lin_vel;
 
-    wheel_velocity[FL_TURN] =  0;
-    wheel_velocity[FR_TURN] =  0;
-    wheel_velocity[BR_TURN] =  0;
-    //wheel_velocity[FL_TURN] =  0;
+    //result = dxl_wb_->goalPosition(1, forward_pos[0],&log);
+    result = dxl_wb_->goalPosition(2, forward_pos[1],&log);
+    result = dxl_wb_->goalPosition(3, forward_pos[2],&log);
+    result = dxl_wb_->goalPosition(4, forward_pos[3],&log);
   }
   else if (goal_direction == 1) {
-    wheel_velocity[FL_MOVE] =  0;
-    wheel_velocity[FR_MOVE] =  0;
-    wheel_velocity[BL_MOVE] =  0;
-    wheel_velocity[BR_MOVE] =  0;
+    wheel_velocity[FL_MOVE] =  -1 * robot_lin_vel;
+    wheel_velocity[FR_MOVE] =  robot_lin_vel;
+    wheel_velocity[BL_MOVE] =  -1 * robot_lin_vel;
+    wheel_velocity[BR_MOVE] =  robot_lin_vel;
 
-    wheel_velocity[FL_TURN] = -1 * robot_lin_vel;
-    wheel_velocity[FR_TURN] = -1 * robot_lin_vel;
-    wheel_velocity[BR_TURN] = -1 * robot_lin_vel;
-    //wheel_velocity[FL_TURN] = -1 * robot_lin_vel;
+    //result = dxl_wb_->goalPosition(1, sidway_pos[0],&log);
+    result = dxl_wb_->goalPosition(2, sideway_pos[1],&log);
+    result = dxl_wb_->goalPosition(3, sideway_pos[2],&log);
+    result = dxl_wb_->goalPosition(4, sideway_pos[3],&log);
   }
   else {
     wheel_velocity[FL_MOVE] =  0;
@@ -607,21 +626,17 @@ void DynamixelController::movementCallback(const user_controls::movement::ConstP
     wheel_velocity[BL_MOVE] =  0;
     wheel_velocity[BR_MOVE] =  0;
 
-    wheel_velocity[FL_TURN] =  0;
-    wheel_velocity[FR_TURN] =  0;
-    wheel_velocity[BR_TURN] =  0;
-    //wheel_velocity[FL_TURN] =  0;
   }
 
   dynamixel_velocity[FL_MOVE] = wheel_velocity[FL_MOVE] * velocity_constant_value;
-  dynamixel_velocity[FR_MOVE] = -1 * wheel_velocity[FR_MOVE] * velocity_constant_value;
+  dynamixel_velocity[FR_MOVE] = wheel_velocity[FR_MOVE] * velocity_constant_value;
   dynamixel_velocity[BL_MOVE] = wheel_velocity[BL_MOVE] * velocity_constant_value;
-  dynamixel_velocity[BR_MOVE] = -1 * wheel_velocity[BR_MOVE] * velocity_constant_value;
+  dynamixel_velocity[BR_MOVE] = wheel_velocity[BR_MOVE] * velocity_constant_value;
 
   dynamixel_velocity[FL_TURN] = wheel_velocity[FL_TURN] * velocity_constant_value;;
   dynamixel_velocity[FR_TURN] = wheel_velocity[FR_TURN] * velocity_constant_value;;
-  dynamixel_velocity[BR_TURN] = wheel_velocity[BR_TURN] * velocity_constant_value;;
   // dynamixel_velocity[BL_TURN] = wheel_velocity[BL_TURN] * velocity_constant_value;
+  dynamixel_velocity[BR_TURN] = wheel_velocity[BR_TURN] * velocity_constant_value;;
 
   // Send data to dynamixels
   result = dxl_wb_->goalVelocity(5, dynamixel_velocity[FL_MOVE], &log);
@@ -636,6 +651,7 @@ void DynamixelController::movementCallback(const user_controls::movement::ConstP
   {
     ROS_ERROR("%s", log);
   }
+  previous_direction = msg->goal_direction;
 }
 
 void DynamixelController::writeCallback(const ros::TimerEvent&)

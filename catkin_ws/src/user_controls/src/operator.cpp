@@ -31,6 +31,15 @@
 #define STOP1          0x73
 #define STOP2          0x53
 
+// Controls for turning dynamixels
+#define DYNA1          0x31
+#define DYNA2          0x32
+#define DYNA3          0x33
+#define DYNA4          0x34
+
+#define INCREASE_POS   0x41
+#define DECREASE_POS   0x44
+
 int getch(void)
 {
   struct termios old_terminal, new_terminal;
@@ -131,7 +140,8 @@ int main(int argc, char **argv)
     if(controls.about_face == 1) {
       controls.about_face = 0;
     }
-
+    controls.dyna_id = 0;
+    controls.dyna_pos = 0;
     // If character available
     if (kbhit())
     {
@@ -190,6 +200,28 @@ int main(int argc, char **argv)
         controls.arm_controls = 0;
         ROS_INFO("goal_direction: %d", controls.goal_direction);
         ROS_INFO("arm has stopped moving");
+      }
+      else if (c == DYNA1)
+      {
+        controls.dyna_id = 1;
+      }
+      else if (c == DYNA2)
+      {
+        controls.dyna_id = 2;
+      }
+      else if (c == DYNA1)
+      {
+        controls.dyna_id = 3;
+      }
+      else if (c == DYNA1)
+      {
+        controls.dyna_id = 4;
+      }
+      else if (c == INCREASE_POS){
+        controls.dyna_pos = 2;
+      }
+      else if (c == INCREASE_POS){
+        controls.dyna_pos = -2;
       }
     }
 
